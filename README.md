@@ -12,3 +12,9 @@ My work environment is:
 | terminal multiplexer | Tmux |
 | shell | Fish |
 | terminal application | Alacritty |
+
+# Install
+
+dnf install fish exa alacritty tmux neovim jetbrains-mono-fonts-all
+
+
