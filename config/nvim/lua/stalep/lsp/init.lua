@@ -3,6 +3,6 @@ if not status_ok then
   return
 end
 
-require "user.lsp.mason"
-require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
+require "stalep.lsp.mason"
+require("stalep.lsp.handlers").setup()
+require "stalep.lsp.null-ls"
