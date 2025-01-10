@@ -1,0 +1,47 @@
+# dark/black
+palette = 0=#282828
+#orange
+palette = 1=#cc241d
+#palette = 1=#fb4934
+#palette = 1=#3c3836
+#green
+palette = 2=#98971a
+#palette = 2=#b8bb26
+#palette = 2=#504956
+#bright orange
+palette = 3=#d79921
+#palette = 3=#665c54
+#blue
+palette = 4=#458588
+#palette = 4=#83a598
+#palette = 4=#7c6f64
+#pink 
+palette = 5=#b16286
+#palette = 5=#fbf1c7
+#orange
+palette = 6=#689d6a
+#palette = 6=#d65d0e
+#palette = 6=#ebdbb2
+#white
+palette = 7=#a89984
+#palette = 7=#d5c4a1
+#light brown
+palette = 8=#928374
+#palette = 8=#a89984
+# red/orange
+palette = 9=#fb4934
+#green, identical to palette2
+palette = 10=#b8bb26
+#bright yellow
+palette = 11=#fabd2f
+palette = 12=#83a598
+palette = 13=#d3869b
+palette = 14=#8ec07c
+palette = 15=#ebdbb2
+background = #282828
+#background = #1d2021
+#foreground = #fbf1c7
+foreground = #d4be98
+cursor-color = #ffffff
+selection-background = #2b2c3f
+selection-foreground = #7cfb70
