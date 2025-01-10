@@ -1,5 +1,5 @@
 # NOTE: init starship prompt
-# starship init fish | source
+starship init fish | source
 
 # NOTE: init zoxide (improved cd)
 #zoxide init fish | source
@@ -13,8 +13,8 @@ set fish_greeting
 set -gx ENABLE_SPRING 0
 set -gx DEFAULT_USER $USER
 
-set -gx EDITOR 'nvim'
-set -gx HSANDBOX_EDITOR 'nvim'
+set -gx EDITOR nvim
+set -gx HSANDBOX_EDITOR nvim
 
 # NOTE: util variables (used by Tmux etc) {{{
 set -gx NERD_IDX_FILL '' '' '' '' '' '' '' '' '' ''
@@ -25,23 +25,6 @@ set -gx NERD_IDX_OUTLINE '' '' '' '' '' '' '' '' '' '
 set -gx TZ_LIST 'Europe/Amsterdam,America/New_York,America/Los_Angeles'
 # }}}
 
-# TODO: figure out why we had this
-# set -gx LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
-# set -gx CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
-
-# NOTE: H1 related env variables {{{
-  set -gx SKIP_WAIT 1
-  set -gx LINT_STAGED 1
-  set -gx PULL_LOCK 1
-  set -gx USING_ASDF true
-  set -gx POSTGRES_USERNAME 'alexanderjeurissenlocal'
-  set -gx POSTGRES_PASSWORD 'hunter3'
-  export NODE_OPTIONS=--max_old_space_size=4096
-  set -gx TAILWIND_MODE watch
-# }}}
-
-# NOTE: set ripgrep rc file
-set -gx RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
 
 # NOTE: set path {{{
 #set PATH "/home/linuxbrew/.linuxbrew/bin" $PATH # NOTE: linux brew
@@ -62,12 +45,15 @@ set PATH "$HOME/.cargo/bin" $PATH
 alias pbcopy "xsel --clipboard --input"
 alias pbpaste "xsel --clipboard --output"
 alias fdfind fd
-alias ls "exa"
+alias ls eza
 alias la "ls -A"
-alias ll "exa -l -g --icons"
+alias ll "eza -l -g --icons"
 alias lla "ll -a"
 alias g git
 alias vim nvim
+
+# Vi mode
+set -g fish_key_bindings fish_vi_key_bindings
 
 
 # NOTE: Go path settings {{{
@@ -78,23 +64,23 @@ alias vim nvim
 # set -g XML_CATALOG_FILES "/usr/local/etc/xml/catalog" # TODO: evaluate env var
 
 # Java settings {{{
-  # set -gx JAVA_HOME (/usr/libexec/java_home)
-  # set -gx MAVENPATH $HOME/.maven
-  # set PATH $PATH "$MAVENPATH/bin"
+# set -gx JAVA_HOME (/usr/libexec/java_home)
+# set -gx MAVENPATH $HOME/.maven
+# set PATH $PATH "$MAVENPATH/bin"
 # }}}
 
 # FZF settings {{{
-  set fzf_fd_opts --hidden --exclude=.git
-  set fzf_preview_dir_cmd exa --all --color=always
+set fzf_fd_opts --hidden --exclude=.git
+set fzf_preview_dir_cmd exa --all --color=always
 # set -gx FZF_DEFAULT_OPTS '--color=bw,border:0,info:2,prompt:12,fg:10 --height 40% --reverse --prompt="  "'
- # set -gx FZF_DEFAULT_OPTS '--color=bg+:#073642,bg:#eee8d5,spinner:#859900,hl:#586e75,fg:#073642,pointer:#859900,info:#cb4b16,fg+:#fdf6e3,marker:#859900,header:#586e75,prompt:#859900,hl+:#859900'
+# set -gx FZF_DEFAULT_OPTS '--color=bg+:#073642,bg:#eee8d5,spinner:#859900,hl:#586e75,fg:#073642,pointer:#859900,info:#cb4b16,fg+:#fdf6e3,marker:#859900,header:#586e75,prompt:#859900,hl+:#859900'
 # set -gx _ZO_FZF_OPTS "--height 40% --reverse $FZF_DEFAULT_OPTS"
 # set -gx FZF_DEFAULT_COMMAND 'rg --files'
 # set -gx FZF_CTRL_T_COMMAND 'rg --files'
 # }}}
 
 # LS colors settings {{{
-eval (dircolors -c ~/.config/dircolors/dircolors.ansi-dark)
+#eval (dircolors -c ~/.config/dircolors/dircolors.ansi-dark)
 # }}}
 # The following two are required to make yarn install binaries and
 # packages in nodenv's location. Without they will go into
@@ -110,15 +96,11 @@ eval (dircolors -c ~/.config/dircolors/dircolors.ansi-dark)
 #  set -x GPG_TTY (tty)
 #  set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 #  gpgconf --launch gpg-agent
-  # fish_ssh_agent
-  # set -gx SSH_AUTH_SOCK "/Users/alexanderjeurissen/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+# fish_ssh_agent
+# set -gx SSH_AUTH_SOCK "/Users/alexanderjeurissen/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 # }}}
 
 source ~/.gitaliases
 
 # vim: foldmethod=marker:sw=2:foldlevel=10
 
-# Generated for envman. Do not edit.
-#test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
-
-fish_add_path /home/stalep/.spicetify
