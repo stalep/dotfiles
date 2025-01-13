@@ -148,6 +148,20 @@ local config = {
 config['on_attach'] = function(client, bufnr)
   jdtls.setup_dap { hotcodereplace = 'auto' }
   require('jdtls.dap').setup_dap_main_class_configs()
+
+  require('custom.lsp.conf').on_attach(client, bufnr, {
+    server_side_fuzzy_completion = true,
+  })
+
+  jdtls.setup_dap { hotcodereplace = 'auto' }
+  jdtls.setup.add_commands()
+  local opts = { silent = true, buffer = bufnr }
+  vim.keymap.set('n', '<leader>ctt', jdtls.test_class, opts)
+  vim.keymap.set('n', '<leader>ctm', jdtls.test_nearest_method, opts)
+  -- local create_command = vim.api.nvim_buf_create_user_command
+  -- create_command(bufnr, 'W', require('custom.lsp.ext').remove_unused_imports, {
+  --   nargs = 0,
+  -- })
 end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.

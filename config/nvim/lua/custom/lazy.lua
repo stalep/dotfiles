@@ -10,4 +10,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 -- put lazy into the runtime path
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)

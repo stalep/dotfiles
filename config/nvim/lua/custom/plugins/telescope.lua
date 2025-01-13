@@ -4,6 +4,16 @@
 -- you do for a plugin at the top level, you can do for a dependency.
 --
 -- Use the `dependencies` key to specify the dependencies of a particular plugin
+local showSymbolFinder = function()
+  local opts = {
+    symbols = {
+      'interface',
+      'class',
+      'constructor',
+      'method',
+    },
+  }
+end
 
 return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
@@ -52,6 +62,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup {
+      defaults = {
+        path_display = { 'smart' },
+        -- shorten_path = true,
+      },
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
@@ -77,13 +91,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    -- git
+    vim.keymap.set('n', '<leader>gc', '<cmd>Telescope git_commits<CR>', { desc = '[Git] [C]ommits' })
+    vim.keymap.set('n', '<leader>gs', '<cmd>Telescope git_status<CR>', { desc = '[Git] [Git] [S]tatus' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -102,6 +119,49 @@ return { -- Fuzzy Finder (files, lsp, etc)
         prompt_title = 'Live Grep in Open Files',
       }
     end, { desc = '[S]earch [/] in Open Files' })
+
+    vim.keymap.set('n', '<leader>ss', function()
+      require('telescope.builtin').lsp_document_symbols {
+        -- grep_open_files = true,
+        prompt_title = 'Searching for Symbols',
+        symbols = {
+          'interface',
+          'class',
+          'constructor',
+          'method',
+          'function',
+          'variable',
+        },
+      }
+    end, { desc = '[S]earch [S]ymbols' })
+
+    vim.keymap.set('n', '<leader>sS', function()
+      require('telescope.builtin').lsp_dynamic_workspace_symbols {
+        prompt_title = 'Searching for Symbols in workspace',
+      }
+    end, { desc = '[S]earch [S]ymbols in workspace' })
+
+    vim.keymap.set('n', '<leader>sm', function()
+      require('telescope.builtin').lsp_document_symbols {
+        -- grep_open_files = true,
+        prompt_title = 'Searching for Methods and functions',
+        symbols = {
+          'method',
+          'function',
+        },
+      }
+    end, { desc = '[S]earch [M]ethods' })
+
+    vim.keymap.set('n', '<leader>sc', function()
+      require('telescope.builtin').lsp_workspace_symbols {
+        -- grep_open_files = true,
+        prompt_title = 'Searching for classes/interfaces',
+        symbols = {
+          'interface',
+          'class',
+        },
+      }
+    end, { desc = '[S]earch [C]lasses/Interfaces' })
 
     -- Shortcut for searching your Neovim configuration files
     vim.keymap.set('n', '<leader>sn', function()
