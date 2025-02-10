@@ -149,10 +149,10 @@ config['on_attach'] = function(client, bufnr)
   jdtls.setup_dap { hotcodereplace = 'auto' }
   require('jdtls.dap').setup_dap_main_class_configs()
 
-  require('custom.lsp.conf').on_attach(client, bufnr, {
-    server_side_fuzzy_completion = true,
-  })
-
+  -- require('custom.lsp.conf').on_attach(client, bufnr, {
+  --   server_side_fuzzy_completion = true,
+  -- })
+  --
   jdtls.setup_dap { hotcodereplace = 'auto' }
   jdtls.setup.add_commands()
   local opts = { silent = true, buffer = bufnr }

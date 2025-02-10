@@ -16,6 +16,9 @@ return {
       cmdline = {
         enabled = true,
         view = 'cmdline',
+        format = {
+          input = { view = 'cmdline', icon = '󰥻 ' },
+        },
       },
       messages = {
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
@@ -28,12 +31,15 @@ return {
         view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
       },
       lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          -- ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        progress = {
+          enabled = true,
         },
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        -- override = {
+        --   ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        --   ['vim.lsp.util.stylize_markdown'] = true,
+        --   ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        -- },
       },
       -- you can enable a preset for easier configuration
       presets = {
