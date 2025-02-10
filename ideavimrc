@@ -1,0 +1,272 @@
+"" Base Settings
+"" ========================================================
+
+set scrolloff=10
+" set linenumber
+set number relativenumber
+set showmode
+set showcmd
+set smartcase
+set incsearch
+" set hlsearch
+
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed   
+
+let mapleader = " "
+
+" Key mappings
+" ========================================================
+inoremap jk <Esc>
+
+" Tab navigation
+nnoremap <S-right> :tabnext<CR>
+nnoremap <S-left> :tabprev<CR>
+" map <S-l> <Action>(NextTab)
+" map <S-h> <Action>(PreviousTab)
+
+" Pane navigation
+nnoremap <C-left> <C-w>h
+nnoremap <C-right> <C-w>l
+nnoremap <C-up> <C-w>k
+nnoremap <C-down> <C-w>j
+
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Popup navigation
+" inoremap <C-j> <Action>(PopupMenu-selectNext)
+" inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" Jump around with easymotion
+" map <leader>s <Plug>(easymotion-s)
+
+nmap <C-m> <Action>(ShowPopupMenu)
+nmap <C-S-m> <Action>(ToolWindowsGroup)
+
+"" Plugin Settings
+"" ========================================================
+Plug 'vim-surround'
+set surround
+set commentary
+set highlightedyank
+set sneak
+set NERDTree
+" Easymotion settings
+set easymotion
+set notimeout
+set mini-ai
+
+" Which-key settings
+set which-key
+let g:WhichKey_FontSize = 16
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+
+let g:WhichKeyDesc_easymotion = "<leader>s Jump with Easymotion"
+let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
+
+" Open NERDTree (use q to exit)
+map <leader>e :NERDTreeToggle<CR>
+let g:WhichKeyDesc_nerd_tree_toggle = "<leader>e Open file explorer"
+
+" Comment lines
+" map <leader>c <action>(CommentByLineComment)
+map gc <action>(CommentByLineComment)
+let g:WhichKeyDesc_comment = "<leader>gcc Comment line"
+
+" Folding
+let g:WhichKeyDesc_fold = "<leader>z Folding"
+map <leader>zc :action CollapseAllRegions<CR>
+let g:WhichKeyDesc_fold_all = "<leader>zc Fold all regions"
+map <leader>zo :action ExpandAllRegions<CR>
+let g:WhichKeyDesc_unfold_all = "<leader>zo Unfold all regions"
+
+" Window splits
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+map <leader>- <Action>(SplitVertically)
+let g:WhichKeyDesc_window_split_vertically = "<leader>- Split vertically"
+map <leader>| <Action>(SplitHorizontally)
+let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
+map <leader>wu <Action>(Unsplit)
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+
+" Display options
+let g:WhichKeyDesc_display = "<leader>u UI options"
+map <leader>uz <action>(ToggleZenMode)
+let g:WhichKeyDesc_zen_mode = "<leader>uz Toggle Zen mode"
+map <leader>ud <action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_df_mode = "<leader>ud Toggle Distraction-Free mode"
+map <leader>uf <action>(ToggleFullScreen)
+let g:WhichKeyDesc_fullscreen = "<leader>uf Toggle full screen"
+" Terminal
+map <leader>ut <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_terminal = "<leader>ut Terminal"
+
+let g:WhichKeyDesc_action= "<leader>a Actions"
+let g:WhichKeyDesc_action_context_menu = "<leader>am Open context menu"
+let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
+
+" File navigation and Search
+let g:WhichKeyDesc_file_quickLook = "<leader>s File navigation and Search"
+map <leader><leader> <action>(GotoFile)
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>sf Go to file"
+map <leader>sg <action>(FindInPath)
+let g:WhichKeyDesc_file_nav_goto_content = "<leader>sg Search for file content"
+map <leader>, <action>(RecentFiles)
+let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>, Show recent files"
+map <leader>sj <action>(RecentLocations)
+let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>sj Jump to recent locations"
+nmap <leader>sh <Action>(LocalHistory.ShowHistory)
+let g:WhichKeyDesc_file_opt_history = "<leader>sh Show Local History"
+nmap <leader>sr <Action>(ReplaceInPath)
+let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>sr Replace In Path"
+
+nmap <leader>sS <action>(SearchEverywhere)
+nmap <leader>su <Action>(FindUsages)
+nmap <leader>sn <Action>(ShowNavBar)
+nmap <leader>sa <Action>(GotoAction)
+nmap <leader>sc <Action>(GotoClass)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>ss <Action>(GotoSymbol)
+nmap <leader>st <Action>(TextSearchAction)
+let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
+let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
+let g:WhichKeyDesc_search_nav_bar = "<leader>sn Show Nav Bar"
+let g:WhichKeyDesc_search_action = "<leader>sa Search Action"
+let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
+let g:WhichKeyDesc_search_file = "<leader>sf Search File"
+let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
+let g:WhichKeyDesc_search_text = "<leader>st Search Text"
+
+let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
+
+let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"
+let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract method"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
+
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gy <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gu <Action>(ShowUsages)
+nmap gt <Action>(GotoTest)
+nmap gf <Action>(Back)
+nmap gb <Action>(Forward)
+nmap gm <Action>(FileStructurePopup)
+let g:WhichKeyDesc_goto = "g Go to X"
+let g:WhichKeyDesc_goto_declaration = "gd Go to Definition"
+let g:WhichKeyDesc_goto_type_declaration = "gy Go to Type Definition"
+let g:WhichKeyDesc_goto_implementation = "gi Go to Implementation"
+let g:WhichKeyDesc_goto_usages = "gu Go to Usages"
+let g:WhichKeyDesc_goto_test = "gt Go to Test"
+let g:WhichKeyDesc_goto_back = "gb Go Back"
+let g:WhichKeyDesc_goto_forward = "gf Go Forward"
+
+" Git windows
+map <leader>gc <Action>(CheckinProject)
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+map <leader>gb <Action>(Git.Branches)
+map <leader>ga <Action>(Annotate)
+let g:WhichKeyDesc_git = "<leader>g Git operations"
+let g:WhichKeyDesc_git_commit = "<leader>gc Open Git commit dialog"
+let g:WhichKeyDesc_git_status = "<leader>gs Open Git status dialog"
+let g:WhichKeyDesc_git_branches = "<leader>gb Open Git branches list"
+let g:WhichKeyDesc_git_annotate = "<leader>ga Open Git annotation view"
+
+" Errors
+let g:WhichKeyDesc_errors = "<leader>x Error navigation"
+map <leader>xn <Action>(ReSharperGotoNextErrorInSolution)
+let g:WhichKeyDesc_errors_next = "<leader>xn Go to next error in solution"
+map <leader>xp <Action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_errors_prev = "<leader>xp Go to previous error in solution"
+
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+
+" Close active tab
+map <leader>q <action>(CloseContent)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Run
+map <leader>tr <Action>(Run)
+map <leader>tc <Action>(RunClass)
+map <leader>td <Action>(Debug)
+
+
+" Information commands
+nmap <leader>ie <Action>(ShowErrorDescription)
+nmap <leader>it <Action>(ExpressionTypeInfo)
+nmap <leader>ip <Action>(ParameterInfo)
+nmap <leader>ij <Action>(QuickJavaDoc)
+nmap <leader>if <Action>(FileStructurePopup)
+nmap <leader>iU <Action>(ShowUmlDiagram)
+nmap <leader>ih <Action>(CallHierarchy)
+nmap <leader>iu <Action>(ShowUsages)
+nmap <leader>im <Action>(MethodHierarchy)
+let g:WhichKeyDesc_info = "<leader>i Information"
+let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
+let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
+let g:WhichKeyDesc_info_parameter = "<leader>ip Parameter Info"
+let g:WhichKeyDesc_info_javadoc = "<leader>ij Java Doc"
+let g:WhichKeyDesc_info_file_structure = "<leader>if File Structure"
+let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
+let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
+let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
+let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
+
+nmap <leader>dx <Action>(Debug)
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>dv <Action>(ViewBreakpoints)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>dt <Action>(ToggleLineBreakpoint)
+nmap <leader>dC <Action>(RunToCursor)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>dr <Action>(Resume)
+nmap <leader>dR <Action>(EvaluateExpression)
+nmap <leader>dt <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_debugging = "<leader>d Debugging"
+let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
+let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
+let g:WhichKeyDesc_debug_view_breakpoints = "<leader>dv View Breakpoints"
+let g:WhichKeyDesc_debug_edit_breakpoints = "<leader>de Edit Breakpoints"
+let g:WhichKeyDesc_debug_mute_breakpoints = "<leader>dm Mute Breakpoints"
+let g:WhichKeyDesc_debug_toggle_line_breakpoint = "<leader>dt Toggle Line Breakpoint"
+let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
+let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
+let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
+let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
+let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+
+

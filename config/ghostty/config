@@ -2,6 +2,8 @@
 #theme = GruvboxDarkHard
 theme = gruvbox-material2
 font-family = "JetBrains Mono"
+# font-family = "NeoSpleen Nerd Font"
+# adjust-cell-width = 1
 window-decoration = false
 
 keybind = ctrl+a>r=reload_config
