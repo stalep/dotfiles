@@ -15,6 +15,12 @@ My work environment is:
 
 # Install
 
-dnf install fish exa alacritty tmux neovim jetbrains-mono-fonts-all
+dnf install fish exa alacritty tmux neovim jetbrains-mono-fonts-all fzf chromium
 
+
+## Hyprland
+
+dnf copr enable solopasha/hyprland 
+
+dnf install hyprland hyprutils hyprcursor waybar wofi hyprpaper fcitx5 hyprpolkitagent wl-clipboard cliphist mako pamixer hyprland-contrib hyprland-plugins hyprshot hypridle hyprlock btop fontawesome-6-brands-fonts fontawesome-6-free-fonts fontawesome-fonts-web fontawesome4-fonts fontawesome4-fonts-web 
 
