@@ -17,9 +17,11 @@ My work environment is:
 # Install
 
 Common terminal tools and utils:
+
 `dnf install fish eza alacritty tmux neovim jetbrains-mono-fonts-all fzf chromium jetbrainsmono-nerd-fonts lazygit bat`
 
 Manually install lazydocker:
+
 `go install github.com/jesseduffield/lazydocker@latest`
 
 ## Fish
@@ -35,6 +37,7 @@ fisher install reitzig/sdkman-for-fish@v2.1.0
 patrickf1/fzf.fish
 ```
 This should enable sdkman, ssh-agent and fzf in the terminal. Eg, use Ctrl-Alt-f to search for files.
+
 The fzf plugin defaults to use exa, lets set it up to use eza:
 `set fzf_preview_dir_cmd eza --all --color=always`
 
@@ -45,10 +48,12 @@ The fedora base repo does not contain all the programs needed for Hyprland, luck
 
 `dnf copr enable solopasha/hyprland` 
 
-`dnf install hyprland hyprutils hyprcursor waybar wofi hyprpaper fcitx5 hyprpolkitagent wl-clipboard cliphist mako pamixer hyprland-contrib hyprland-plugins hyprshot hypridle hyprlock btop fontawesome-6-brands-fonts fontawesome-6-free-fonts fontawesome-fonts-web fontawesome4-fonts fontawesome4-fonts-web pavucontrol swaybg`
+```
+dnf install hyprland hyprutils hyprcursor waybar wofi hyprpaper fcitx5 hyprpolkitagent wl-clipboard cliphist mako pamixer hyprland-contrib hyprland-plugins hyprshot hypridle hyprlock btop fontawesome-6-brands-fonts fontawesome-6-free-fonts fontawesome-fonts-web fontawesome4-fonts fontawesome4-fonts-web pavucontrol swaybg
+```
 
 
-Manually install 1Password:
+Manually install 1Password if you want:
 
 ```
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc  
@@ -58,11 +63,13 @@ sudo dnf install 1password
 
 # Hyprland
 
-This hyprland setup use Waybar, mako, wofi, swaybg, hypridle, hyprlock, ++
+This hyprland setup use waybar, mako, wofi, swaybg, hypridle, hyprlock, ++
+
 Have a look at the config files under `.config/hypr/*`, `.config/waybar/*` etc for a better understanding regarding how it's configured and the applications needed.
+
 To enable Hyprland, simply select it before you log in from the list of WM's.
 
-`swaybg` is currently pointing to a file under `.~/backgrounds/` please have a look in `.config/hypr/autostart.conf`.
+`swaybg` is currently pointing to a file under `.~/backgrounds/` please have a look in `.config/hypr/autostart.conf` to point it to the background picture you want.
 
 
 
