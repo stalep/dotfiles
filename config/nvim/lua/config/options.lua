@@ -7,3 +7,5 @@ vim.opt.smoothscroll = false
 vim.g.autoformat = false
 
 vim.breakindent = true
+
+vim.g.snacks_animate = false
